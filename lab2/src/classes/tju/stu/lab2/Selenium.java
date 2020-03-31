@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Selenium {
-	public static void main (String[] args) {
-	//public static String getInformation() {
+//	public static void main (String[] args) {
+	String getInformation(String userID,String pass) {
 		String driverPath = System.getProperty("user.dir") + "/src/resources/driver/geckodriver.exe";
 		System.setProperty("webdriver.gecko.driver", driverPath);
 		WebDriver driver = new FirefoxDriver();
@@ -21,18 +21,19 @@ public class Selenium {
 
         user = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/div/form/div[1]/input"));
         user.click();
-        user.sendKeys("3017218053");
+        user.sendKeys(userID);
         password = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/div/form/div[2]/input"));
         password.click();
-        password.sendKeys("https://gitee.com/chenkuochih/software_test.git\r\n");
+        password.sendKeys(pass);
         submit = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/div/form/div[3]/input"));
         submit.click();
         information = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/div/form/div[5]/code"));
-        System.out.println(information.getText());
+//        System.out.println(information.getText());
 //        Thread.sleep(10000);
-        
+        String infor = information.getText();
         driver.quit();
-//        return information.getText();
+//        return 1;
+        return infor;
 	}
 
 }
